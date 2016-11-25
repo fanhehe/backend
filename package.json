@@ -1,0 +1,24 @@
+{
+  "name": "fanhehe.backend",
+  "version": "1.0.0",
+  "description": "a web restful api server for fanhehe.com",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start ./bin/www",
+    "test": "npm run unit"
+  },
+  "keywords": [
+    "backend",
+    "fanhehe.com",
+    "restful",
+    "api"
+  ],
+  "author": "fanhehe",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.0.0"
+  },
+  "devDependencies": {
+    "tsd": "^0.6.5"
+  }
+}

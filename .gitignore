@@ -1,0 +1,8 @@
+.idea/
+.DS_Store
+node_modules/
+config/local.json
+app.js
+routes/*.js
+routes/**/*.js
+bin/*.js
