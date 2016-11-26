@@ -6,3 +6,5 @@ app.js
 routes/*.js
 routes/**/*.js
 bin/*.js
+npm-debug.log
+*.js.map
