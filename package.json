@@ -4,14 +4,11 @@
   "description": "a web restful api server for fanhehe.com",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run development && pm2 start ./bin/www.js",
-    "start": "npm run deploy && pm2 start ./bin/www.js",
+    "dev": "cross-env NODE_ENV=development node bin/www",
+    "deploy": "cross-env NODE_ENV=product pm2 start bin/www -i 0 --name backend",
     "test": "echo 1",
-    "tsc": "./node_modules/.bin/tsc",
-    "build": "npm run deploy && npm run tsc",
-    "clean": "gulp clean",
-    "deploy": "cross-env NODE_ENV=product",
-    "development": "crpss-env NODE_ENV=development"
+    "build": "./node_modules/.bin/tsc",
+    "clean": "gulp clean"
   },
   "keywords": [
     "backend",
@@ -22,7 +19,11 @@
   "author": "fanhehe",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.0.0"
+    "koa": "^2.0.0",
+    "koa-json": "^1.1.3",
+    "koa-logger": "^1.3.0",
+    "koa-router": "^7.0.1",
+    "koa-session": "^3.4.0"
   },
   "devDependencies": {
     "@types/node": "^6.0.51",

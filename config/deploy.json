@@ -1,10 +1,36 @@
 {
     "product": {
         "ip": "0.0.0.0",
-        "port": "5000"
+        "port": "5000",
+        "session": {
+            "key": "koa:sess",
+            "maxAge": 86400000,
+            "overwrite": true,
+            "httpOnly": true,
+            "signed": true
+        },
+        "whiteList": [
+            "http://www.fanhehe.com",
+            "https://www.fanhehe.com"
+        ]
     },
     "development": {
         "ip": "0.0.0.0",
-        "port": "3001"
+        "port": "3001",
+         "session": {
+            "key": "koa:sess",
+            "maxAge": 86400000,
+            "overwrite": true,
+            "httpOnly": true,
+            "signed": true
+        },
+        "whiteList": [
+            "http://localhost:3000",
+            "http://localhost:3001",
+            "http://localhost:8000",
+            "http://localhost:8001",
+            "http://www.fanhehe.com",
+            "https://www.fanhehe.com"
+        ]
     }
 }

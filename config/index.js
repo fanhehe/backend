@@ -9,5 +9,4 @@ if (dev || fs.existsSync('./local.json')) {
     env = 'development';
     config = require('./local.json');
 }
-
 module.exports = config[env];
