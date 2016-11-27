@@ -1,14 +1,15 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
         "target": "es5",
-        "noImplicitAny": false,
-        "sourceMap": true
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "typeRoots": [
+            "./node_modules/@types/"
+        ],
+        "types": [
+            "node"
+        ]
     },
-    "files": [
-        "./typings/tsd.d.ts",
-        "./bin/www.ts"
-    ],
     "exclude": [
         "node_modules"
     ]
