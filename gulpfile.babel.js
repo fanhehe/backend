@@ -7,11 +7,13 @@ var rootDir = path.resolve() || __dirname;
 gulp.task('Dir', function () {
     var binDir = path.join(rootDir, 'bin');
     var routesDir = path.join(rootDir, 'routes');
+    var modelsBin = path.join(rootDir, 'models');
     var suffix = ['*.js', '*.js.map', '**/*.js', '**/*.js.map'];
 
     var dirArray = [
         binDir,
         routesDir,
+        modelsBin,
     ];
     dirArray.map( (dir) => {
         var exp = suffix.map ( (suffix) => path.resolve(dir, suffix));

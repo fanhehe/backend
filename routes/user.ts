@@ -1,7 +1,16 @@
-const  router = require('koa-router')();
+const router = require('koa-router')();
 
 router.get('/', function (ctx, next) {
-  ctx.body = 'this a users response!';
+  const userId = ctx.session.user? ctx.session.user.id : '';
+  let resData = {};
+  if (userId) {
+    ctx.body = {
+      username: '1',
+      data: {}
+    };
+  } else {
+    ctx.body = "user not login";
+  }
 });
 
 export default router;

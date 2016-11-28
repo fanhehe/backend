@@ -4,8 +4,12 @@
 node_modules/
 config/local.json
 app.js
+
 routes/*.js
 routes/**/*.js
+models/*.js
+models/**/*.js
+utils/*.js
 bin/*.js
 npm-debug.log
 *.js.map
