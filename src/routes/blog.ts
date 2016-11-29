@@ -6,12 +6,11 @@ const db = require('../models/mysql')(DBSequelize,'main');
 import resConfig from '../utils/ResponseFormatter';
 
 router.get('/', (ctx, next) => {
-    console.log('blog, over');
-    ctx.body = {a: 1};
+    ctx.body = {a: 'abca'};
 });
 router.get('/info/:id', (ctx, next) => {
     const id = ctx.params.id;
-    console.log(db.TUser.find, '---s-----s------s-----');
+    console.log(1,2);
     db.TUser.find({
         where: {
             id,

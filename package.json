@@ -4,11 +4,12 @@
   "description": "a web restful api server for fanhehe.com",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node bin/www",
+    "dev": "cross-env NODE_ENV=development nodemon -e js ./bin/www",
     "deploy": "cross-env NODE_ENV=product pm2 start bin/www -i 0 --name backend",
     "test": "echo 1",
     "build": "./node_modules/.bin/tsc",
-    "clean": "gulp clean"
+    "clean": "gulp clean",
+    "compiler": "gulp dev"
   },
   "keywords": [
     "backend",
@@ -41,7 +42,10 @@
     "gulp-watch": "^4.3.11",
     "http": "^0.0.0",
     "https": "^1.0.0",
+    "nodemon": "^1.11.0",
     "path": "^0.12.7",
-    "typescript": "^2.2.0-dev.20161126"
+    "ts-loader": "^1.2.2",
+    "typescript": "^2.2.0-dev.20161126",
+    "webpack": "^1.13.3"
   }
 }

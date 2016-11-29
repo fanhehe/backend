@@ -13,7 +13,7 @@ http.createServer(app.callback()).listen(port, function () {
 });
 
 function normalizePort (value) {
-    const port = parseInt(value, 10);
+    const port = parseInt(value, 100);
 
     if (isNaN(port)) {
         return value;

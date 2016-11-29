@@ -30,13 +30,22 @@ gulp.task('clean',['cleanSrc', 'cleanBin'], function () {
 });
 
 gulp.task('dev', function () {
+
+    const binDir = path.resolve(rootDir, 'bin');
+
     const suffix = ['*.ts', '**/*.ts'];
-    const pathname = dirArray.map(item => path.resolve(srcDir, item));
     const tsConfig = ts.createProject('tsconfig.json', {
         typescript: require('typescript'),
     });
 
-    watch( pathname, function (){
-        gulp.src(pathname).pipe(tsConfig());
+    const Src = suffix.map(item => path.resolve(srcDir, item));
+    const Bin = suffix.map(item => path.resolve(binDir, item));
+
+    const Watch = Src.concat(Bin);
+
+    watch(Watch, function () {
+        gulp.src(Src).pipe(tsConfig()).pipe(gulp.dest(srcDir));
+        //gulp.src(Bin).pipe(tsConfig()).pipe(gulp.dest(binDir));
+        console.log('重新编译完成');
     });
 });
