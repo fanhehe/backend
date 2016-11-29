@@ -8,7 +8,12 @@ const rootDir = path.resolve() || __dirname;
 const srcDir = path.resolve(rootDir, 'src');
 
 gulp.task('default', function () {
-    console.log('------->','gulp clean', '清理.js及.js.map文件');
+    console.log('\n');
+    console.log('------->','gulp dev : ', '检测.ts 自动编译');
+    console.log('------->','gulp clean : ', '清理.js及.js.map文件');
+    console.log('\n');
+    
+    // console.log('------->','gulp build', '编译.ts');
 });
 
 gulp.task('cleanSrc', function () {
