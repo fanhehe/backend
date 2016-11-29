@@ -2,24 +2,19 @@ import fs = require('fs');
 import path = require('path');
 import sequelize from 'sequelize';
 
-export default function main (DBClient, database) {
-    let pathname: string;
-    const MAIN = 'main';
-    const model = new Model(DBClient);
-    switch (database) {
-        case MAIN: pathname
-    }
+module.exports =  function main (DBClient, dbName: string) {
+
+    const models = getAllModel(dbName);
+    return {
+        ... models.map(item => ( {[item.name]: require(item.path)}) ),
+    };
 };
 
-function Model (DBClient, database?) {
-    this._connection = DBClient;
-}
-function getAllModel(path: string) {
+function getAllModel(name: string) {
+    const dbName = path.join(__dirname, name, '/');
+    const tables = fs.readdirSync(dbName);
 
-    const dir = fs.readdirSync(path);
-    const pathname = path[path.length - 1] === '/'? '': '/';
-
-    return dir.map(item => {
+    return tables.map(item => {
 
         let filename = item;
         const delimiter = '_';
@@ -27,11 +22,11 @@ function getAllModel(path: string) {
         filename = filename.slice(0, filename.indexOf('.'));
         filename = filename.split(delimiter).map( (item, index)=> {
             return index === 0 ? '': Capitalize(item);
-        }).join();
+        }).join('');
 
         return {
             name: `T${filename}`,
-            module: require(`${pathname}${item}`),
+            path: `${dbName}${item}`,
         }
     });
 

@@ -1,4 +1,4 @@
-export default function (sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   return sequelize.define('tbl_user', {
     id: {
       type: DataTypes.INTEGER(11),
@@ -17,7 +17,7 @@ export default function (sequelize, DataTypes) {
     real_name: {
       type : DataTypes.CHAR(50),
     },
-    avatar: {
+    preview: {
       type : DataTypes.CHAR(100),
     },
     nickname: {

@@ -26,7 +26,6 @@ app.use(async (ctx, next) => {
     await next();
     const end:any = new Date();
     const ms = end - start;
-    console.log(this);
     ctx.set('X-Response-Time', ms);
 });
 app.use(async (ctx, next) => {
@@ -57,7 +56,7 @@ app.on('error', function (err, ctx) {
     console.error(err, ctx);
 });
 
-app.use( ctx => {   
+app.use( (ctx, next) => {   
     const error = new Error('Not Found');
     console.log(error.stack);
     ctx.body = {
