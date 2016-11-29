@@ -11,7 +11,7 @@ const bodyParser = require('koa-bodyparser')();
 
 import user from './routes/user';
 import blog from './routes/blog';
-const config = require('./config');
+const config = require('../config');
 
 const app = new Koa();
 

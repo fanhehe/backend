@@ -3,13 +3,13 @@
 .DS_Store
 node_modules/
 config/local.json
-app.js
 
-routes/*.js
-routes/**/*.js
-models/*.js
-models/**/*.js
-utils/*.js
 bin/*.js
-npm-debug.log
-*.js.map
+bin/*.js.map
+
+src/*.js
+src/**/*.js
+src/*.js.map
+src/**/*.js.map
+
+*npm-debug.log

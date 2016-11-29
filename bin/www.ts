@@ -1,4 +1,4 @@
-import app from '../app';
+import app from '../src/app';
 const http = require('http');
 const https = require('https');
 

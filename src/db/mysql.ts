@@ -1,6 +1,6 @@
 import Sequelize = require('sequelize');
 
-const mysql = require('../config/database').default;
+const mysql = require('../../config/database').default;
 
 export default {
     Main: init(mysql),
