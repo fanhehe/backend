@@ -2,7 +2,7 @@ import Sequelize = require('sequelize');
 
 const mysql = require('../../config/database').default;
 
-export default {
+module.exports = {
     Main: init(mysql),
 };
 

@@ -43,6 +43,7 @@
     "http": "^0.0.0",
     "https": "^1.0.0",
     "nodemon": "^1.11.0",
+    "object-assign": "^4.1.0",
     "path": "^0.12.7",
     "ts-loader": "^1.2.2",
     "typescript": "^2.2.0-dev.20161126",
