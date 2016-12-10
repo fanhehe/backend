@@ -9,22 +9,22 @@ router.get('/', (ctx, next) => {
     ctx.body = {a: 'abcacs'};
 });
 
-router.get('/info/:id', (ctx, next) => {
+router.get('/info/:id', async (ctx, next) => {
     const id = ctx.params.id;
-
-    db.TUser.find({
+    const data = await db.TUser.find({
         where: {
             id,
         }
     }).then(function (user) {
-         if(user) {
-            ctx.body(resConfig(ctx.request,'ok',user));
-        } else {
-            ctx.body(resConfig(ctx.request,'assets_no_exist',''))
-        }
+        const data = user ? user.dataValues: '';
+        const status = user ? 'ok': 'assets_no_exist';
+        ctx.body = user.dataValues;
+        return user.dataValues;
     }).catch(function (error) {
         console.log(error);
+        ctx.body = resConfig(ctx, 'ok', 'sss');
     });
+    ctx.body = {a:2};
 });
 router.get('/list', (ctx, next) => {
 });

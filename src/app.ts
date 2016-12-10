@@ -2,10 +2,10 @@ const Koa = require('koa');
 const path = require('path');
 const json = require('koa-json');
 const logger = require('koa-logger');
+const morgan = require('koa-morgan');
+const favicon = require('koa-favicon');
 const convert = require('koa-convert');
 const session = require('koa-session');
-const onError = require('koa-onerror');
-
 const router = require('koa-router')();
 const bodyParser = require('koa-bodyparser')();
 
@@ -20,7 +20,8 @@ app.use(convert(bodyParser));
 app.use(convert(json()));
 app.use(convert(logger()));
 app.use(convert(session(config.session, app)));
-
+app.use(convert(favicon(__dirname + '/public/favicon.ico')));
+app.use(convert(morgan('dev')));
 app.use(async (ctx, next) => {
     const start:any = new Date();
     await next();
@@ -42,7 +43,7 @@ app.use(async (ctx, next) => {
         ctx.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, Cookie');
         ctx.set('Access-Control-Allow-Methods','PUT,POST,GET,DELETE,OPTIONS');
         ctx.set('Access-Control-Allow-Credentials', 'true');
-        ctx.set('X-Powered-By',' 3.2.1')
+        ctx.set('X-Powered-By',' 3.2.1');
         ctx.set('Content-Type', 'application/json;charset=utf-8');
         next();
     }
@@ -56,12 +57,12 @@ app.on('error', function (err, ctx) {
     console.error(err, ctx);
 });
 
-app.use( (ctx, next) => {   
+app.use( (ctx, next) => {
     const error = new Error('Not Found');
     console.log(error.stack);
     ctx.body = {
         code: 500,
-        message: error.message, 
+        message: error.message,
         error: error.message
     }
 });

@@ -33,10 +33,6 @@ module.exports = function (sequelize, DataTypes) {
     qq:{
       type: DataTypes.CHAR(20),
     },
-    oauth_id:{
-      type : DataTypes.INTEGER(11),
-      unique:true
-    },
     status:{
       type : DataTypes.INTEGER(4),
       defaultValue:0

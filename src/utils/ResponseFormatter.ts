@@ -1,4 +1,4 @@
-function response(req, errName, data) {
+function response(ctx, errName, data) {
     let userId;
     let returnContent;
     const msgBody = responseContentList();
@@ -6,8 +6,8 @@ function response(req, errName, data) {
 
     if (!!data) returnContent.data = data;
 
-    if (req.session) {
-        req.session.nls == 'zh_cn' || !req.session.nls ?
+    if (ctx.session) {
+        ctx.session.nls == 'zh_cn' || !ctx.session.nls ?
         returnContent.msg = returnContent.msg.zh_cn :
         returnContent.msg = returnContent.msg.en_us;
 
