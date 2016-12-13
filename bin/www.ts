@@ -9,15 +9,15 @@ const port = process.env.PORT || config.port;
 
 // https.createServer({key: '',cert: ''}, app);
 http.createServer(app.callback()).listen(port, function () {
-    console.log(`the server is listening on port ${port}`);
+	console.log(`the server is listening on port ${port}`);
 });
 
 function normalizePort (value) {
-    const port = parseInt(value, 100);
+	const port = parseInt(value, 100);
 
-    if (isNaN(port)) {
-        return value;
-    } else {
-        return port;
-    }
+	if (isNaN(port)) {
+		return value;
+	} else {
+		return port;
+	}
 }
