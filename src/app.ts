@@ -38,6 +38,7 @@ app.use(async (ctx, next) => {
 	const url = origin || host;
 	const whiteList = config.whiteList;
 	ensureCROS = whiteList.some( item => item.indexOf(url) != -1);
+	console.log(ensureCROS);
 
 	if (!ensureCROS) {
 		console.log('no permision for cros');
@@ -51,7 +52,7 @@ app.use(async (ctx, next) => {
 		next();
 	}
 });
-
+router.prefix('/api');
 router.use('/user', user.routes(), user.allowedMethods());
 router.use('/blog', blog.routes(), blog.allowedMethods());
 
