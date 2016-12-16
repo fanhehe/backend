@@ -1,8 +1,10 @@
 const path = require('path');
 const router = require('koa-router')();
-const DBSequelize = require('../db/mysql').Main;
-const db = require('../db/mysql/models/')(DBSequelize, 'Main');
-db.TUser.find({where: {id: 1}}).then(function (data) { console.log(data.dataValues) });
+import { Main as db} from '../db/mysql';
+
+// 测试 ORM Mysql 是否连接成功。
+// db.TUser.find({ where: { id: 1, }}).then(function (data){ console.log(data.dataValues); });
+
 router.get('/', (ctx, next) => {
 	return new Promise(function (resolve, reject) {
 		setTimeout(function(){

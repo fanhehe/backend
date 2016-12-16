@@ -1,14 +1,17 @@
-import Sequelize = require('sequelize');
-const { Main } = require('../../../config/').storage;
+import syncTables from './models';
+import sequelize = require('sequelize');
+const { Main: MainConfig} = require('../../../config/').storage;
 
-module.exports = {
-	Main: initialize(Main),
-};
+export const Main = initializeWith(MainConfig);
+function initializeWith (config: DBConfig) {
+	const client = connect(config);
+	return syncTables(client);
+}
 
-function initialize(config :DBConfig) {
+function connect(config :DBConfig): sequelize {
 	const { port, host, username, password, database, connectionLimit } = config;
 
-	return new Sequelize(
+	return new sequelize(
 		database,
 		username,
 		password,

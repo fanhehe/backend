@@ -1,6 +1,5 @@
 const router = require('koa-router')();
-const DBSequelize = require('../db/mysql').Main;
-const db = require('../db/mysql/models/')(DBSequelize, 'Main');
+import { Main as db} from '../db/mysql';
 
 router.get('/', function (ctx, next) {
 	const userId = ctx.session.user? ctx.session.user.id : '';
