@@ -1,8 +1,8 @@
 const path = require('path');
 const router = require('koa-router')();
 const DBSequelize = require('../db/mysql').Main;
-const db = require('../models/mysql')(DBSequelize,'main');
-
+const db = require('../db/mysql/models/')(DBSequelize, 'Main');
+db.TUser.find({where: {id: 1}}).then(function (data) { console.log(data.dataValues) });
 router.get('/', (ctx, next) => {
 	return new Promise(function (resolve, reject) {
 		setTimeout(function(){

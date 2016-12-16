@@ -6,7 +6,7 @@ import sequelize = require('sequelize');
 module.exports =  function main (DBClient, dbName?: string) {
 	dbName = dbName? dbName: 'main';
 	const models = getAllModel(dbName);
-
+	
 	const module = models
 		.map(item => ( {[item.name]: require(item.path)(DBClient, sequelize)}))
 		.reduce((prev, next) => {

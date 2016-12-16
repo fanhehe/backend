@@ -1,34 +1,56 @@
 {
-    "product": {
-        "ip": "0.0.0.0",
-        "port": "5000",
-        "session": {
-            "key": "koa:sess",
-            "maxAge": 86400000,
-            "overwrite": true,
-            "httpOnly": true,
-            "signed": true
-        },
-        "whiteList": [
-            "http://www.fanhehe.com",
-            "https://www.fanhehe.com"
-        ]
-    },
-    "development": {
-        "ip": "0.0.0.0",
-        "port": "3001",
-         "session": {
-            "key": "koa:sess",
-            "maxAge": 86400000,
-            "overwrite": true,
-            "httpOnly": true,
-            "signed": true
-        },
-        "whiteList": [
-            "http://www.fanhehe.com",
-            "https://www.fanhehe.com",
-            "https://www.fanhehe.cn",
-            "https://www.fanhehe.cn"
-        ]
-    }
+	"product": {
+		"ip": "0.0.0.0",
+		"port": "5000",
+		"session": {
+			"key": "koa:sess",
+			"maxAge": 86400000,
+			"overwrite": true,
+			"httpOnly": true,
+			"signed": true
+		},
+		"whiteList": [
+			"http://www.fanhehe.com",
+			"https://www.fanhehe.com"
+		],
+		"storage": {
+			"Main": {
+				"type": "mysql",
+				"connectionLimit": 200,
+				"host" : "127.0.0.1",
+				"port" : 3306,
+				"username" : "fanhehe",
+				"password" : "13889441200",
+				"database" : "Main"
+			}
+		}
+	},
+	"development": {
+		"ip": "0.0.0.0",
+		"port": "3001",
+		"session": {
+			"key": "koa:sess",
+			"maxAge": 86400000,
+			"overwrite": true,
+			"httpOnly": true,
+			"signed": true
+		},
+		"whiteList": [
+			"http://www.fanhehe.com",
+			"https://www.fanhehe.com",
+			"https://www.fanhehe.cn",
+			"https://www.fanhehe.cn"
+		],
+		"storage": {
+			"Main": {
+				"type": "mysql",
+				"connectionLimit": 200,
+				"host" : "127.0.0.1",
+				"port" : 3306,
+				"username" : "fanhehe",
+				"password" : "13889441200",
+				"database" : "Main"
+			}
+		}
+	}
 }
