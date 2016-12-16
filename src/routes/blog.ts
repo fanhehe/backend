@@ -3,8 +3,6 @@ const router = require('koa-router')();
 const DBSequelize = require('../db/mysql').Main;
 const db = require('../models/mysql')(DBSequelize,'main');
 
-import resConfig from '../utils/ResponseFormatter';
-
 router.get('/', (ctx, next) => {
 	return new Promise(function (resolve, reject) {
 		setTimeout(function(){
@@ -26,7 +24,6 @@ router.get('/info/:id', async (ctx, next) => {
 		return user.dataValues;
 	}).catch(function (error) {
 		console.log('err', error);
-		ctx.body = resConfig(ctx, 'ok', '');
 	});
 	ctx.body = data;
 });

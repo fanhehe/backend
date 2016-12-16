@@ -25,6 +25,7 @@ app.use(convert(logger()));
 app.use(convert(session(config.session, app)));
 app.use(convert(favicon(__dirname + '/public/favicon.ico')));
 app.use(convert(morgan('dev')));
+// 处理时间
 app.use(async (ctx, next) => {
 	const start:any = new Date();
 	await next();
@@ -32,13 +33,13 @@ app.use(async (ctx, next) => {
 	const ms = end - start;
 	ctx.set('X-Response-Time', ms);
 });
+// CROS
 app.use(async (ctx, next) => {
 	let ensureCROS = false;
 	const { origin, host } = ctx.headers;
 	const url = origin || host;
 	const whiteList = config.whiteList;
 	ensureCROS = whiteList.some( item => item.indexOf(url) != -1);
-	console.log(ensureCROS);
 
 	if (!ensureCROS) {
 		console.log('no permision for cros');
@@ -50,6 +51,16 @@ app.use(async (ctx, next) => {
 		ctx.set('X-Powered-By',' 3.2.1');
 		ctx.set('Content-Type', 'application/json;charset=utf-8');
 		next();
+	}
+});
+// 处理options
+app.use(async (ctx, next) => {
+	const method = ctx.method;
+	const regExp = /options/i;
+	if (regExp.test(method)) {
+		ctx.body = {method: 'options', status: 'success'};
+	} else {
+		await next();
 	}
 });
 router.prefix('/api');

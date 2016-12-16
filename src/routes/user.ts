@@ -1,8 +1,9 @@
 const router = require('koa-router')();
+const DBSequelize = require('../db/mysql').Main;
+const db = require('../models/mysql')(DBSequelize,'main');
 
 router.get('/', function (ctx, next) {
 	const userId = ctx.session.user? ctx.session.user.id : '';
-	console.log(1);
 	let resData = {};
 	if (userId) {
 		ctx.body = {
@@ -15,9 +16,9 @@ router.get('/', function (ctx, next) {
 });
 
 router.post('/register', async (ctx, next) => {
-	ctx.body = {
-		status: 'successs',
-	};
+	const data = ctx.request.body;
+	db.TUser.create({data});
+	ctx.body = {success: 'success'};
 });
 
 export default router;

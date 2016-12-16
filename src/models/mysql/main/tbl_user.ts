@@ -11,9 +11,6 @@ module.exports = function (sequelize, DataTypes) {
 	password: {
 	  type : DataTypes.CHAR(32),
 	},
-	real_password: {
-	  type: DataTypes.STRING(100),
-	},
 	real_name: {
 	  type : DataTypes.CHAR(50),
 	},
