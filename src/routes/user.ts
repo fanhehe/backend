@@ -1,5 +1,5 @@
 const router = require('koa-router')();
-import { Main as db} from '../db/mysql';
+import { Main } from '../db/mysql';
 
 router.get('/', function (ctx, next) {
 	const userId = ctx.session.user? ctx.session.user.id : '';
@@ -16,8 +16,9 @@ router.get('/', function (ctx, next) {
 
 router.post('/register', async (ctx, next) => {
 	const data = ctx.request.body;
-	db.TUser.create({data});
-	ctx.body = {success: 'success'};
+	const result = await Main.TUser.find({where: {id: 1}}).then(data=> data.dataValues);
+	console.log(result, 'success');
+	ctx.body = result;
 });
 
 export default router;

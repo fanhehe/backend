@@ -1,12 +1,13 @@
 import * as types from '../constants/response';
 
-export default function response(status: string, data = {}, options?: Options) :ResponseBody {
-	const body:any = {};
+export default function response(status: string | number, data = {}, options?: Options): ResponseBody {
+	const body: any = {};
+	const lang = options.lang || 'zh_cn';
 	const state = resList[status] || resList.default;
-
+	
 	body.data = data;
 	body.code = state.code;
-	body.message =  state.message[options.lang]|| state.message.zh_cn;
+	body.message =  state.message[lang];
 
 	return body;
 }
