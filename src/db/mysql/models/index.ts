@@ -6,8 +6,9 @@ import assign = require('object-assign');
 export default function syncTables (Client: sequelize) {
 	const result: any = {};
 	const { database } = Client.config;
+
 	const models = getAllModel(database);
-	
+
 	const module = models
 		.map(item => ( {[item.name]: require(item.path)(Client, sequelize)}))
 		.reduce((prev, next) => assign(prev, next), result);
@@ -25,7 +26,6 @@ function getAllModel(name: string) {
 	const tables = fs.readdirSync(dbName);
 
 	return tables
-		.filter(item => item.indexOf('.ts') !== -1)
 		.map(item => item.slice(0, item.indexOf('.')))
 		.map(item => {
 

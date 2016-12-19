@@ -1,18 +1,19 @@
 {
     "compilerOptions": {
+        "watch": false,
         "target": "es5",
         "sourceMap": false,
-        "lib": ["es2017"],
         "module": "commonjs",
         "moduleResolution": "node",
         "experimentalDecorators": true,
+        
+        "outDir": "./dist",
+        
         "typeRoots": [
             "./node_modules/@types/"
-        ],
-        "types": [
-            "node"
         ]
     },
+    "include": ["./src/**/*"],
     "exclude": [
         "node_modules"
     ]

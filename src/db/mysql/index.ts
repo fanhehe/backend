@@ -1,8 +1,9 @@
 import syncTables from './models';
 import sequelize = require('sequelize');
-const { Main: MainConfig} = require('../../../config/').storage;
+const { main: MainConfig} = require('../../../config/').storage;
 
 export const Main = initializeWith(MainConfig);
+
 function initializeWith (config: DBConfig) {
 	const client = connect(config);
 	return syncTables(client);
@@ -23,7 +24,7 @@ function connect(config :DBConfig): sequelize {
 				maxConnections: connectionLimit, 
 				maxIdleTime: 0
 			},
-			logging:function(result){},
+			logging: console.log,
 			sync: { force: true },
 		}
 	);

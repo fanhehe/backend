@@ -6,51 +6,57 @@ const ts = require('gulp-typescript');
 
 const rootDir = path.resolve() || __dirname;
 const srcDir = path.resolve(rootDir, 'src');
+const distDir = path.resolve(rootDir, 'dist');
 
 gulp.task('default', function () {
     console.log('\n');
-    console.log('------->','gulp dev : ', '检测.ts 自动编译');
+    // console.log('------->','gulp dev : ', '检测.ts 自动编译');
     console.log('------->','gulp clean : ', '清理.js及.js.map文件');
     console.log('\n');
-    
-    // console.log('------->','gulp build', '编译.ts');
 });
 
-gulp.task('cleanSrc', function () {
+gulp.task('clean', function () {
     const suffix = ['*.js', '*.js.map', '**/*.js', '**/*.js.map'];
-    const exp = suffix.map ( (suffix) => path.resolve(srcDir, suffix));
-
-    del(exp);
-});
-gulp.task('cleanBin', function () {
-    const binDir = path.resolve(rootDir, 'bin');
-    const suffix = ['*.js', '*.js.map', '**/*.js', '**/*.js.map'];
-    const exp = suffix.map ( (suffix) => path.resolve(binDir, suffix));
+    const exp = suffix.map ( (suffix) => path.resolve(distDir, suffix));
 
     del(exp);
 });
 
-gulp.task('clean',['cleanSrc', 'cleanBin'], function () {
-    console.log('.js 及 .map文件清理完毕');
-});
+// gulp.task('cleanSrc', function () {
+//     const suffix = ['*.js', '*.js.map', '**/*.js', '**/*.js.map'];
+//     const exp = suffix.map ( (suffix) => path.resolve(srcDir, suffix));
 
-gulp.task('dev', function () {
+//     del(exp);
+// });
+// gulp.task('cleanBin', function () {
+//     const binDir = path.resolve(rootDir, 'bin');
+//     const suffix = ['*.js', '*.js.map', '**/*.js', '**/*.js.map'];
+//     const exp = suffix.map ( (suffix) => path.resolve(binDir, suffix));
 
-    const binDir = path.resolve(rootDir, 'bin');
+//     del(exp);
+// });
 
-    const suffix = ['*.ts', '**/*.ts'];
-    const tsConfig = ts.createProject('tsconfig.json', {
-        typescript: require('typescript'),
-    });
+// gulp.task('clean',['cleanSrc'], function () {
+//     console.log('.js 及 .map文件清理完毕');
+// });
 
-    const Src = suffix.map(item => path.resolve(srcDir, item));
-    const Bin = suffix.map(item => path.resolve(binDir, item));
+// gulp.task('compiler', function () {
 
-    const Watch = Src.concat(Bin);
+//     const binDir = path.resolve(rootDir, 'bin');
 
-    watch(Watch, function () {
-        gulp.src(Src).pipe(tsConfig()).pipe(gulp.dest(srcDir));
-        //gulp.src(Bin).pipe(tsConfig()).pipe(gulp.dest(binDir));
-        console.log('重新编译完成');
-    });
-});
+//     const suffix = ['*.ts', '**/*.ts'];
+//     const tsConfig = ts.createProject('tsconfig.json', {
+//         typescript: require('typescript'),
+//     });
+
+//     const Src = suffix.map(item => path.resolve(srcDir, item));
+//     const Bin = suffix.map(item => path.resolve(binDir, item));
+
+//     const Watch = Src.concat(Bin);
+
+//     watch(Watch, function () {
+//         gulp.src(Src).pipe(tsConfig()).pipe(gulp.dest(srcDir));
+//         //gulp.src(Bin).pipe(tsConfig()).pipe(gulp.dest(binDir));
+//         console.log('重新编译完成');
+//     });
+// });

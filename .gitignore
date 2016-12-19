@@ -4,12 +4,11 @@
 node_modules/
 config/local.json
 
-bin/*.js
-bin/*.js.map
-
 src/*.js
 src/**/*.js
 src/*.js.map
 src/**/*.js.map
+
+dist/
 
 *npm-debug.log

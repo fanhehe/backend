@@ -40,9 +40,8 @@ app.use(async (ctx, next) => {
 	const url = origin || host;
 	const whiteList = config.whiteList;
 	ensureCROS = whiteList.some( item => item.indexOf(url) != -1);
-
 	if (!ensureCROS) {
-		console.log('no permision for cros');
+		console.log('no permision for cros', origin);
 	} else {
 		ctx.set('Access-Control-Allow-Origin', origin);
 		ctx.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, Cookie');
@@ -63,6 +62,7 @@ app.use(async (ctx, next) => {
 		await next();
 	}
 });
+
 router.prefix('/api');
 router.use('/user', user.routes(), user.allowedMethods());
 router.use('/blog', blog.routes(), blog.allowedMethods());
@@ -82,4 +82,5 @@ app.use( (ctx, next) => {
 		error: error.message
 	}
 });
-export default app;
+
+module.exports = app;
