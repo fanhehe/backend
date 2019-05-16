@@ -1,0 +1,14 @@
+.idea/
+.vscode/
+.DS_Store
+node_modules/
+config/local.json
+
+src/*.js
+src/**/*.js
+src/*.js.map
+src/**/*.js.map
+
+dist/
+
+*npm-debug.log
